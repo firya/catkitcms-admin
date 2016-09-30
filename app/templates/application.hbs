@@ -1,0 +1,12 @@
+<aside>
+    {{menu-main menuItems=this.mainMenuItems}}
+</aside>
+<article>
+    <header>
+        {{crumbs-body  menuItems=this.mainMenuItems}}
+        {{toolbar-body}}
+    </header>
+    <div class="page">
+        {{outlet}}
+    </div>
+</article>

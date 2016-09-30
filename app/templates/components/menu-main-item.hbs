@@ -1,0 +1,8 @@
+<a><i></i><label>{{t item.caption}}</label></a>
+<ul>
+    {{#each item.links as |link|}}
+        <li>
+            {{#link-to link.route}}<label>{{t link.caption }}</label>{{/link-to}}
+        </li>
+    {{/each}}
+</ul>

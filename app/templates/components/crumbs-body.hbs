@@ -1,0 +1,17 @@
+{{yield}}
+
+{{#each breadCrumbs as |crumb|}}
+    {{#if crumb.link}}
+        {{#if crumb.model}}
+            {{#link-to crumb.link crumb.model class="ergksehrg"}}
+                {{t crumb.caption}}
+            {{/link-to}}
+        {{else}}
+            {{#link-to crumb.link}}
+                {{t crumb.caption}}
+            {{/link-to}}
+        {{/if}}
+    {{else}}
+        {{t crumb.caption}}
+    {{/if}}
+{{/each}}

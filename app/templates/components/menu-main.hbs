@@ -1,0 +1,9 @@
+<ul class="">
+    {{test}}
+    <div class="logo">
+        <img src="{{rootURL}}images/logo.svg">
+    </div>
+    {{#each this.menuItems as |item index|}}
+        {{menu-main-item item=item itemClick="itemClick" register-as=this.usedItems }}
+    {{/each}}
+</ul>
