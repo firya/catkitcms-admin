@@ -4,17 +4,50 @@ module.exports = function(app) {
   var pagesRouter = express.Router();
 
   pagesRouter.get('/', function(req, res) {
-    res.send({
-      'pages': [
-        {
-          id: 1,
-          title: 'First test page'
-        }, {
-          id: 2,
-          title: 'Second test page'
-        }
-      ]
-    });
+    res.send(
+            
+            {
+  "content.pages": [
+    {
+      id: 151,
+      title: 'Test1',
+      parent: 0,
+      template: 0,
+      params: {
+        title: "",
+        keywords: "",
+        description: ""
+      },
+      children:[153]
+    },
+    {
+      id: 153,
+      title: 'SubTest1',
+      parent: 151,
+      template: 0,
+      params: {
+        title: "",
+        keywords: "",
+        description: ""
+      },
+      children:[156]
+    },
+    {
+      id: 156,
+      title: 'SubSubTest1',
+      parent: 153,
+      template: 2,
+      params: {
+        title: "",
+        keywords: "",
+        description: ""
+      },
+      children:[]
+    }
+  ]
+}
+        
+            );
   });
 
   pagesRouter.post('/', function(req, res) {
@@ -23,7 +56,7 @@ module.exports = function(app) {
 
   pagesRouter.get('/:id', function(req, res) {
     res.send({
-      'pages': {
+      'contentPages': {
         id: req.params.id
       }
     });
@@ -51,5 +84,5 @@ module.exports = function(app) {
   // this mock uncommenting the following line:
   //
   //app.use('/api/pages', require('body-parser').json());
-  app.use('/admin/api/pages', pagesRouter);
+  app.use('/admin/api/contentPages', pagesRouter);
 };
