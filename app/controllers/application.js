@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
             route: 'content',
             links: Ember.A([{
                     caption: 'menu.pages',
-                    route: 'content.pages'
+                    route: 'content.pages',
                 }, {
                     caption: 'menu.catalogs',
                     route: 'content.catalogs'
@@ -39,5 +39,12 @@ export default Ember.Controller.extend({
         }, {
             caption: 'menu.help',  
         }
-    ])
+    ]),
+    bla: 123,
+    actions: {
+      toggle() {
+        console.log('toggle');
+        this.toggleProperty('bla');
+      }
+    }
 });

@@ -56,8 +56,16 @@ module.exports = function(app) {
 
   pagesRouter.get('/:id', function(req, res) {
     res.send({
-      'contentPages': {
-        id: req.params.id
+      'content.pages': {
+        id: req.params.id,
+        title: 'My test item will be edit',
+        template: 2,
+        parent: 153,
+        params: {
+          title: "",
+          keywords: "",
+          description: ""
+        }
       }
     });
   });

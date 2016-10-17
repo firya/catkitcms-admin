@@ -6,6 +6,7 @@ export default Ember.Component.extend({
     
     router: null,
     applicationController: null,
+    crumbs: Ember.A(),
     
     handlerInfos: Ember.computed("applicationController.currentPath", function() {
         return this.get("router").router.currentHandlerInfos;
@@ -33,29 +34,31 @@ export default Ember.Component.extend({
       }
       return list;
     }),
+    
+    test: function () {
+      console.log(this.breadCrumbsp.set('123') );
+    }.observes('activeItem'),
+   
+   /**
+    * Fill page crumbs from 
+    */
+   didReceiveAttrs() {
+    var defaultPaths = this.get("pathNames"),
+        menuList = this.get('menuList');
 
-    breadCrumbs: Ember.computed(
-        "pathNames.[]",
-        function() {
-            
-            var defaultPaths = this.get("pathNames"),
-                menuList = this.get('menuList');
-            
-            var breadCrumbs = Ember.A([Ember.Object.create({
-              caption:'home',
-              link:'main'
-            })]);
-            
-            for(let path of defaultPaths){
-              if(menuList[path]){
-                breadCrumbs.addObject(Ember.Object.create({
-                  caption: menuList[path],
-                  link: path
-                }));
-              }
-            }
+    this.crumbs.addObject(Ember.Object.create({
+      caption:'home',
+      link:'main'
+    }));
 
-            return breadCrumbs;
-        }
-    )
+    for(let path of defaultPaths){
+      if(menuList[path]){
+        this.crumbs.addObject(Ember.Object.create({
+          caption: menuList[path],
+          link: path
+        }));
+      }
+    }   
+  }
+  
 });

@@ -3,10 +3,11 @@
 </aside>
 <article>
     <header>
-        {{crumbs-body  menuItems=this.mainMenuItems}}
+        {{crumbs-body menuItems=this.mainMenuItems activeItem=bla}}
         {{toolbar-body}}
     </header>
     <div class="page">
+        <button {{action "toggle"}}>Toggle</button>
         {{outlet}}
     </div>
 </article>
